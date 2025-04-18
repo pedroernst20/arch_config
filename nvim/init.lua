@@ -161,17 +161,18 @@ vim.keymap.set("n", "<C-n>", ":NvimTreeToggle<CR>")
 
 -- Telescope (Ctrl+p para buscar archivos)
 vim.keymap.set("n", "<C-p>", ":Telescope find_files<CR>")
+vim.keymap.set('n', '<C-b>', require('telescope.builtin').git_branches, { desc = "Branches" })
+vim.keymap.set('n', '<C-c>', require('telescope.builtin').git_commits, { desc = "Commits" })
+vim.keymap.set('n', '<C-s>', require('telescope.builtin').git_status, { desc = "Git Status" })
 
--- LSP (ejemplo con pyright, podés instalar más)
+-- LSP
 require("lspconfig").pyright.setup({})
+require("lspconfig").clangd.setup({})
+require("lspconfig").texlab.setup({})
+require("lspconfig").verible.setup({})
 
 -- Establecer la cantidad de espacios para la tabulación
 vim.o.tabstop = 2
 vim.o.softtabstop = 2
 vim.o.shiftwidth = 2      
 vim.o.expandtab = true
-
--- Mapea <Leader>e para abrir/cerrar nvim-tree
-vim.api.nvim_set_keymap('n', '<Leader>e', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
-
-
